@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const compania = document.getElementById('compania').value;
+            const lada = document.getElementById('lada').value;
+            const telefono = document.getElementById('telefono').value;
+            const servicio = document.getElementById('servicio').value;
+            const correoRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!correoRegex.test(correo) || correo.length > 50) {
+                alert("El correo debe tener un '@' y no puede exceder 50 caracteres.");
+                return false;
+            }
+            if (telefono.length != 10 || !/^[0-9]+$/.test(telefono)) {
+                alert("El número telefónico debe tener 10 dígitos y solo contener números.");
+                return false;
+            }
+
+            const body = `Nombre: ${nombre}\nCorreo: ${correo}\nCompañía: ${compania}\nTeléfono: ${lada} ${telefono}\nServicio requerido: ${servicio}`;
+            const mailtoLink = `mailto:crm@databunker.com.mx?subject=Solicitud%20de%20Servicio&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+    </script>
+</head>
+<body>
+    <h2></h2>
+    <form onsubmit="validarFormulario(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        
+        <label for="compania">Compañía:</label>
+        <input type="text" id="compania" name="compania">
+        
+        <label for="telefono">Teléfono:</label>
+        <div class="telefono-container">
+            <select id="lada" name="lada" required>
+                <option value="">País</option>
+                <option value="+52">+52 (México)</option>
+                <option value="+1">+1 (EUA)</option>
+                <option value="+34">+34 (España)</option>
+                <option value="+57">+57 (Colombia)</option>
+                <option value="+55">+55 (Brasil)</option>
+                <option value="+54">+54 (Argentina)</option>
+                <option value="+56">+56 (Chile)</option>
+                <option value="+51">+51 (Perú)</option>
+            </select>
+            <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        </div>
+        
+        <label for="servicio">Servicio requerido:</label>
+        <select id="servicio" name="servicio" required>
+            <option value="">Selecciona un servicio</option>
+            <option value="DRaaS">DRP (DRaaS)</option>
+            <option value="CSaaS">Ciberseguridad (CSaaS)</option>
+            <option value="ServiciosCloud">Servicios Cloud (PaaS, SaaS, IaaS)</option>
+            <option value="ServidoresVirtuales">Servidores Virtuales (VPS/VDI)</option>
+            <option value="BaaS">Backup de información y/o servers (BaaS)</option>
+            <option value="ServiciosAdmin">Servicios Administrados</option>
+            <option value="DataCenter">Data Center (Colo-Hosting)</option>
+            <option value="EnlacesDed">Enlaces Dedicados</option>
+        </select>
+        
+        <div class="submit-container">
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 20px;
+}
+h2 {
+    color: #ffffff;
+}
+form {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    margin: 0 auto;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b3b3b3;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+textarea::placeholder {
+    color: #999999;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    background-color: #333;
+    color: #ffffff;
+    outline: none;
+    border: 1px solid #00bbea;
+}
+textarea {
+    height: 100px;
+}
+.telefono-container {
+    display: flex;
+    gap: 10px;
+}
+.telefono-container select {
+    width: 70px; 
+    padding: 10px;
+}
+.telefono-container input[type="tel"] {
+    width: calc(50% - 10px);
+}
+.submit-container {
+    text-align: center;
+}
+input[type="submit"] {
+    background: #00a0ea;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background: #0098ce;
+}
